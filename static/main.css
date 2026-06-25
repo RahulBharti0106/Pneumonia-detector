@@ -1,0 +1,201 @@
+/* ── Reset & base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0d1117;
+  --surface:    #161b22;
+  --border:     #30363d;
+  --accent:     #58a6ff;
+  --danger:     #f85149;
+  --success:    #3fb950;
+  --warning:    #d29922;
+  --text:       #e6edf3;
+  --text-muted: #8b949e;
+  --radius:     10px;
+  --font:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* ── Layout ──────────────────────────────────────────────────────────────── */
+.main {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ── Title ───────────────────────────────────────────────────────────────── */
+.title {
+  text-align: center;
+}
+
+.title h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.title p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+/* ── Upload panel ────────────────────────────────────────────────────────── */
+.panel {
+  width: 100%;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  padding: 1.5rem;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.upload-box:hover,
+.upload-box.drag-over {
+  border-color: var(--accent);
+  background: #1c2433;
+}
+
+#upload-caption {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+#image-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.button {
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.button:active { transform: scale(0.97); }
+.button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.button-primary {
+  background: var(--accent);
+  color: #0d1117;
+}
+
+.button-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.button-primary:hover:not(:disabled) { opacity: 0.85; }
+.button-secondary:hover:not(:disabled) { border-color: var(--accent); }
+
+/* ── Result box ──────────────────────────────────────────────────────────── */
+#image-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#image-display {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: var(--radius);
+  object-fit: contain;
+  display: none;
+}
+
+#pred-result {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.6;
+  display: none;
+}
+
+#pred-result.result-pneumonia {
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+#pred-result.result-normal {
+  background: rgba(63, 185, 80, 0.12);
+  border: 1px solid var(--success);
+  color: var(--success);
+}
+
+/* ── Loader spinner ──────────────────────────────────────────────────────── */
+#loader {
+  display: none;
+}
+
+#spinner {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: spin 1s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  0%   { stroke-dashoffset: 50; transform: rotate(0deg); }
+  50%  { stroke-dashoffset: 10; }
+  100% { stroke-dashoffset: 50; transform: rotate(360deg); }
+}
+
+/* ── Disclaimer ──────────────────────────────────────────────────────────── */
+.disclaimer {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+/* ── Utility ─────────────────────────────────────────────────────────────── */
+.hidden { display: none !important; }

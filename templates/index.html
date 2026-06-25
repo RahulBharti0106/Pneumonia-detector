@@ -1,32 +1,42 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="main">
+
   <div class="title">
     <h3>Pneumonia Detection</h3>
-    <!-- <p>
-      <small>A web app demo</small>
-    </p> -->
+    <p>Upload a chest X-ray to screen for pneumonia using deep learning</p>
   </div>
 
   <div class="panel">
-    <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+    <input id="file-upload" class="hidden" type="file" accept="image/png,image/jpeg" />
     <label for="file-upload" id="file-drag" class="upload-box">
-      <div id="upload-caption">Drop image here or click to select</div>
-      <img id="image-preview" class="hidden" />
+      <div id="upload-caption">Drop X-ray here or click to select</div>
+      <img id="image-preview" class="hidden" alt="Preview" />
     </label>
   </div>
-  <div style="margin-bottom: 2rem;">
-    <input type="button" value="Submit" class="button" onclick="submitImage();" />
-    <input type="button" value="Clear" class="button" onclick="clearImage();" />
+
+  <div class="button-row">
+    <button id="submit-btn" class="button button-primary" onclick="submitImage();" disabled>
+      Analyse
+    </button>
+    <button id="clear-btn" class="button button-secondary" onclick="clearImage();">
+      Clear
+    </button>
   </div>
 
   <div id="image-box">
-    <img id="image-display" />
-    <div id="pred-result" class="hidden"></div>
+    <img id="image-display" alt="Uploaded X-ray" />
+    <div id="pred-result"></div>
     <svg id="loader" class="hidden" viewBox="0 0 32 32" width="32" height="32">
       <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
     </svg>
   </div>
+
+  <p class="disclaimer">
+    This tool is for educational purposes only and is not a substitute
+    for professional medical diagnosis.
+  </p>
+
 </div>
 
 {% endblock %}
