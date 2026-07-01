@@ -1,14 +1,12 @@
-# ── Model files (too large for git, download separately) ─────────────────────
-models/
-*.keras
+# Model files
 *.h5
 *.pb
 
-# ── User uploads (runtime temp files) ────────────────────────────────────────
+# User uploads
 uploads/*
 !uploads/.gitkeep
 
-# ── Python ────────────────────────────────────────────────────────────────────
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -17,40 +15,40 @@ __pycache__/
 .Python
 *.so
 
-# ── Virtual environments ──────────────────────────────────────────────────────
+# Virtual environments
 venv/
 env/
 ENV/
 .venv/
 .env
 
-# ── Jupyter / Kaggle ──────────────────────────────────────────────────────────
+# Jupyter / Kaggle
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# ── Distribution / packaging ──────────────────────────────────────────────────
+# Distribution / packaging
 dist/
 build/
 *.egg-info/
 *.egg
 
-# ── Testing & coverage ────────────────────────────────────────────────────────
+# Testing & coverage
 .pytest_cache/
 .coverage
 htmlcov/
 
-# ── IDEs ──────────────────────────────────────────────────────────────────────
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# ── OS files ──────────────────────────────────────────────────────────────────
+# OS files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# ── Logs ─────────────────────────────────────────────────────────────────────
+# Logs
 *.log
 logs/
